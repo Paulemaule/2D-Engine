@@ -20,9 +20,20 @@ public final class Base {
 	
 	//starts the basic program loop
 	public static void startLoop() {
+		long t = System.currentTimeMillis();
 		while(true) {
-			world.run();
+			int dt = (int) (System.currentTimeMillis() - t);
+			t = System.currentTimeMillis();
+			world.run(dt);
 			window.draw();
+			
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	

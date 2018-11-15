@@ -10,6 +10,7 @@ public class World {
 	private final List<Entity> worldContent = new ArrayList<Entity>();
 	private final List<Entity> toBeAdded = new ArrayList<Entity>();
 	private final List<Entity> toBeRemoved = new ArrayList<Entity>();
+	private final List<Entity> drawingList = new ArrayList<Entity>();
 	
 	private final Vector size;
 	
@@ -17,18 +18,23 @@ public class World {
 		size = worldSize;
 	}
 	
-	public void run() {
+	public synchronized void run(int t) {
 		worldContent.addAll(toBeAdded);
 		toBeAdded.clear();
+		
 		worldContent.forEach(e -> {
-			e.run();
+			e.run(t);
 		});
-//		worldContent.removeAll(toBeRemoved);
-//		toBeRemoved.clear();
+		
+		worldContent.removeAll(toBeRemoved);
+		toBeRemoved.clear();
+		
+		drawingList.clear();
+		drawingList.addAll(worldContent);
 	}
 	
-	public void paint(Brush b) {
-		worldContent.forEach(e -> {
+	public synchronized void paint(Brush b) {
+		drawingList.forEach(e -> {
 			e.draw(b);
 		});
 	}

@@ -43,13 +43,17 @@ public class Window extends JFrame {
 		public void drawRect(Vector loc, Vector size) {
 			g2d.drawRect(loc.getIntX(), loc.getIntY(), size.getIntX(), size.getIntY());
 		}
+		
+		public void fillRect(Vector loc, Vector size) {
+			g2d.fillRect(loc.getIntX(), loc.getIntY(), size.getIntX(), size.getIntY());
+		}
 	}
 
 	private class DrawPanel extends JPanel {
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			setBackground(Color.WHITE);
+			setBackground(Color.LIGHT_GRAY);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			Brush b = new Brush(g2d);
