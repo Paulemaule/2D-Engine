@@ -15,10 +15,24 @@ import base.utility.maths.Vector;
 public class Window extends JFrame {
 	private DrawPanel dp;
 	
+	private Color background_color = Color.LIGHT_GRAY;
+	
 	public static final int BOTTOM_OFFSET = 57;
 	public static final int RIGHT_OFFSET = 23;
 
 	public Window(Vector frameSize, String title) {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle(title);
+		setSize(frameSize.getIntX(), frameSize.getIntY());
+		setLocationRelativeTo(null);
+		dp = new DrawPanel();
+		setContentPane(dp);
+		setVisible(true);
+	}
+	
+	public Window(Vector frameSize, String title, Color background) {
+		background_color = background;
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(title);
 		setSize(frameSize.getIntX(), frameSize.getIntY());
@@ -33,11 +47,20 @@ public class Window extends JFrame {
 		repaint();
 	}
 	
+	public void setBackgroundColor(Color c) {
+		background_color = c;
+	}
+	
 	//this object will be used by entitys to draw on the window
 	public class Brush {
 		private Graphics2D g2d;
+		
 		protected Brush(Graphics2D g2d) {
 			this.g2d=g2d;
+		}
+		
+		public void setColor(Color c) {
+			g2d.setColor(c);
 		}
 		
 		public void drawRect(Vector loc, Vector size) {
@@ -47,13 +70,21 @@ public class Window extends JFrame {
 		public void fillRect(Vector loc, Vector size) {
 			g2d.fillRect(loc.getIntX(), loc.getIntY(), size.getIntX(), size.getIntY());
 		}
+		
+		public void drawOval(Vector loc, Vector size) {
+			g2d.drawOval(loc.getIntX(), loc.getIntY(), size.getIntX(), size.getIntY());
+		}
+		
+		public void fillOval(Vector loc, Vector size) {
+			g2d.fillOval(loc.getIntX(), loc.getIntY(), size.getIntX(), size.getIntY());
+		}
 	}
 
 	private class DrawPanel extends JPanel {
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			setBackground(Color.LIGHT_GRAY);
+			setBackground(background_color);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			Brush b = new Brush(g2d);
