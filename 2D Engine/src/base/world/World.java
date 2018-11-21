@@ -26,6 +26,10 @@ public class World {
 			e.run(t);
 		});
 		
+		worldContent.forEach(e -> {
+			e.cleanUp(t);
+		});
+		
 		worldContent.removeAll(toBeRemoved);
 		toBeRemoved.clear();
 		
