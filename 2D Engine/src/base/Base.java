@@ -18,7 +18,7 @@ public final class Base {
 		world = new World(worldSize);
 	}
 	
-	//starts the basic program loop
+	//starts the basic while(true) loop
 	public static void startLoop() {
 		long t = System.currentTimeMillis();
 		while(true) {
@@ -30,7 +30,6 @@ public final class Base {
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
