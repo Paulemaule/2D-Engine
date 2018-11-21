@@ -65,10 +65,44 @@ public class MovingEntity extends BasicShapedEntity{
 	}
 	
 	private void stopAtBorder() {
-		
+		if(getLocation().getX()-(getSize().getX()/2) < 0) {
+			setLocation(new Vector(getSize().getX()/2,getLocation().getY()));
+			setVeloctiy(new Vector(0,getVelocity().getY()));
+		}
+		if(getLocation().getY()-(getSize().getY()/2) < 0) {
+			setLocation(new Vector(getLocation().getX(),getSize().getY()/2));
+			setVeloctiy(new Vector(getVelocity().getX(),0));
+		}
+		if(getLocation().getX()+(getSize().getX()/2) > getWorld().getSize().getX()) {
+			setLocation(new Vector(getWorld().getSize().getX() - getSize().getX()/2
+					,getLocation().getY()));
+			setVeloctiy(new Vector(0,getVelocity().getY()));
+			setVeloctiy(new Vector(getVelocity().getX(),0));
+		}
+		if(getLocation().getY()+(getSize().getY()/2) > getWorld().getSize().getY()) {
+			setLocation(new Vector(getLocation().getX()
+					,getWorld().getSize().getY() - getSize().getY() / 2));
+		}
 	}
 	
 	private void reflectAtBorder() {
-		
+		if(getLocation().getX()-(getSize().getX()/2) < 0) {
+			setLocation(new Vector(getSize().getX()/2,getLocation().getY()));
+			setVeloctiy(new Vector(-getVelocity().getX(),getVelocity().getY()));
+		}
+		if(getLocation().getY()-(getSize().getY()/2) < 0) {
+			setLocation(new Vector(getLocation().getX(),getSize().getY()/2));
+			setVeloctiy(new Vector(getVelocity().getX(),-getVelocity().getY()));
+		}
+		if(getLocation().getX()+(getSize().getX()/2) > getWorld().getSize().getX()) {
+			setLocation(new Vector(getWorld().getSize().getX() - getSize().getX()/2
+					,getLocation().getY()));
+			setVeloctiy(new Vector(-getVelocity().getX(),getVelocity().getY()));
+		}
+		if(getLocation().getY()+(getSize().getY()/2) > getWorld().getSize().getY()) {
+			setLocation(new Vector(getLocation().getX()
+					,getWorld().getSize().getY() - getSize().getY() / 2));
+			setVeloctiy(new Vector(getVelocity().getX(),-getVelocity().getY()));
+		}
 	}
 }

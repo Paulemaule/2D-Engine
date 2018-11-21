@@ -14,7 +14,9 @@ public final class Base {
 	
 	//first method that should be called when starting the gui
 	public static void initialize(String windowName, Vector worldSize) {
-		window = new Window(Vector.add(worldSize, new Vector(Window.RIGHT_OFFSET,Window.BOTTOM_OFFSET)), windowName);
+		window = new Window(Vector.add(worldSize,
+				new Vector(Window.RIGHT_OFFSET,Window.BOTTOM_OFFSET)), 
+				windowName);
 		world = new World(worldSize);
 	}
 	

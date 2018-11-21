@@ -17,8 +17,8 @@ public class Window extends JFrame {
 	
 	private Color background_color = Color.LIGHT_GRAY;
 	
-	public static final int BOTTOM_OFFSET = 57;
-	public static final int RIGHT_OFFSET = 23;
+	public static final int BOTTOM_OFFSET = 39;
+	public static final int RIGHT_OFFSET = 16;
 
 	public Window(Vector frameSize, String title) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -13,10 +13,11 @@ public class Main {
 		Base.initialize("TEST221",new Vector(800,500));
 		Base.getWorld().addEntity(
 				new MovingEntity(
-						new Vector(50,100), 
-						new Vector(40,40),
-						Color.GREEN,BasicShapedEntity.FILL_RECT,
-						new Vector(0,0),
+						new Vector(100,100), 
+						new Vector(20,50),
+						Color.GREEN,
+						BasicShapedEntity.FILL_RECT,
+						new Vector(150,150),
 						MovingEntity.REFLECT_AT_BORDER));
 		Base.startLoop();
 	}
