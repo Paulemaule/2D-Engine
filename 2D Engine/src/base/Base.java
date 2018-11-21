@@ -28,11 +28,10 @@ public final class Base {
 			window.draw();
 			
 			try {
-				Thread.sleep(1);
+				Thread.sleep(0);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	
