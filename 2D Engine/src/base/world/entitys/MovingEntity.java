@@ -77,7 +77,6 @@ public class MovingEntity extends BasicShapedEntity{
 			setLocation(new Vector(getWorld().getSize().getX() - getSize().getX()/2
 					,getLocation().getY()));
 			setVeloctiy(new Vector(0,getVelocity().getY()));
-			setVeloctiy(new Vector(getVelocity().getX(),0));
 		}
 		if(getLocation().getY()+(getSize().getY()/2) > getWorld().getSize().getY()) {
 			setLocation(new Vector(getLocation().getX()

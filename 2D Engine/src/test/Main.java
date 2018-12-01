@@ -17,11 +17,11 @@ public class Main {
 		Base.getWorld().addEntity(
 				new MovingEntity(
 						new Vector(100,100), 
-						new Vector(20,50),
-						Color.GREEN,
-						BasicShapedEntity.FILL_RECT,
+						new Vector(50,50),
+						new Color(Maths.round(Maths.random(0, 255)),Maths.round(Maths.random(0, 255)),Maths.round(Maths.random(0, 255))),
+						BasicShapedEntity.FILL_OVAL,
 						new Vector(Maths.random(-150, 150),Maths.random(-150, 150)),
-						MovingEntity.REFLECT_AT_BORDER));
+						MovingEntity.STOP_AT_BORDER));
 		}
 		Base.startLoop();
 	}
