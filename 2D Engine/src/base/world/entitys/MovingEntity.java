@@ -4,12 +4,18 @@ import java.awt.Color;
 
 import base.utility.maths.Vector;
 
-public class MovingEntity extends BasicShapedEntity{
+public class MovingEntity extends ShapedEntity{
+	//when this value is given to the Entity through setBorderBehavior it will
+	//ignor the world border
 	public final static int NO_BORDER_INTERACTION = 0;
+	//stop at the world border
 	public final static int STOP_AT_BORDER = 1;
+	//reflect at the world border
 	public final static int REFLECT_AT_BORDER = 2;
 	
+	//the velocity of the Entity in [pixel/sec]
 	private Vector velo = new Vector(0,0);
+	//the ID of the border behavior
 	private int borderBehavior = 0;
 	
 	public MovingEntity(Vector loc, Vector size, Color c, int shape, Vector velocity, int borderBehavior) {
@@ -45,11 +51,13 @@ public class MovingEntity extends BasicShapedEntity{
 	
 	@Override
 	public void run(int t) {
+		super.run(t);
 		moveBy(Vector.skalMult(((double)t)*0.001, velo));
 	}
 	
 	@Override
 	public void cleanUp(int t) {
+		super.cleanUp(t);
 		switch (borderBehavior) {
 		case NO_BORDER_INTERACTION:
 			break;
@@ -64,6 +72,8 @@ public class MovingEntity extends BasicShapedEntity{
 		}
 	}
 	
+	//if the Entity is touching (or overstepping) a world border it will stop going in the direction of said world border
+	//and place itself right next to it
 	private void stopAtBorder() {
 		if(getLocation().getX()-(getSize().getX()/2) < 0) {
 			setLocation(new Vector(getSize().getX()/2,getLocation().getY()));
@@ -84,6 +94,8 @@ public class MovingEntity extends BasicShapedEntity{
 		}
 	}
 	
+	//if the Entity is touching (or overstepping) a world border it will turn its velocity component facing said
+	//world border and place itself right next to it
 	private void reflectAtBorder() {
 		if(getLocation().getX()-(getSize().getX()/2) < 0) {
 			setLocation(new Vector(getSize().getX()/2,getLocation().getY()));

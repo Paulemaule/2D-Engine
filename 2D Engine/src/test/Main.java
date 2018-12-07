@@ -5,7 +5,7 @@ import java.awt.Color;
 import base.Base;
 import base.utility.maths.Maths;
 import base.utility.maths.Vector;
-import base.world.entitys.BasicShapedEntity;
+import base.world.entitys.ShapedEntity;
 import base.world.entitys.MovingEntity;
 
 public class Main {
@@ -19,7 +19,7 @@ public class Main {
 						new Vector(100,100), 
 						new Vector(50,50),
 						new Color(Maths.round(Maths.random(0, 255)),Maths.round(Maths.random(0, 255)),Maths.round(Maths.random(0, 255))),
-						BasicShapedEntity.FILL_OVAL,
+						ShapedEntity.FILL_OVAL,
 						new Vector(Maths.random(-150, 150),Maths.random(-150, 150)),
 						MovingEntity.STOP_AT_BORDER));
 		}

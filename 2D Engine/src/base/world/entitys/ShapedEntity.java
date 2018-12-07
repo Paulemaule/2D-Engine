@@ -5,7 +5,7 @@ import java.awt.Color;
 import base.gui.Window.Brush;
 import base.utility.maths.Vector;
 
-public class BasicShapedEntity extends BasicEntity{
+public class ShapedEntity extends BasicEntity{
 	public final static int FILL_RECT = 0;
 	public final static int RECT = 1;
 	public final static int FILL_OVAL = 2;
@@ -16,7 +16,7 @@ public class BasicShapedEntity extends BasicEntity{
 	private Color color;
 	private int shape;
 	
-	public BasicShapedEntity(Vector loc, Vector size, Color c, int shape, String ID) {
+	public ShapedEntity(Vector loc, Vector size, Color c, int shape, String ID) {
 		super(ID);
 		this.loc = loc;
 		this.size = size;
@@ -24,7 +24,7 @@ public class BasicShapedEntity extends BasicEntity{
 		this.shape = shape;
 	}
 	
-	public BasicShapedEntity(Vector loc, Vector size, Color c, int shape) { 
+	public ShapedEntity(Vector loc, Vector size, Color c, int shape) { 
 		this.loc = loc;
 		this.size = size;
 		color = c;
