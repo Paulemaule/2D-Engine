@@ -43,6 +43,16 @@ public class World {
 		});
 	}
 	
+	//returns the i-th entity placed in this world
+	public Entity get(int i) {
+		return worldContent.get(i);
+	}
+	
+	//returns the amount of entitys placed in this world
+	public int getAmount() {
+		return worldContent.size();
+	}
+	
 	//The specified entity will be added to the worldContent at the next start of a run cycle
 	public void addEntity(Entity e) {
 		toBeAdded.add(e);

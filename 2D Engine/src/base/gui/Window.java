@@ -15,7 +15,7 @@ import base.utility.maths.Vector;
 public class Window extends JFrame {
 	private DrawPanel dp;
 	
-	private Color background_color = Color.LIGHT_GRAY;
+	private Color background_color = Color.WHITE;
 	
 	public static final int BOTTOM_OFFSET = 39;
 	public static final int RIGHT_OFFSET = 16;
@@ -61,6 +61,10 @@ public class Window extends JFrame {
 		
 		public void setColor(Color c) {
 			g2d.setColor(c);
+		}
+		
+		public void drawLine(Vector start, Vector end) {
+			g2d.drawLine(start.getIntX(), start.getIntY(), end.getIntX(), end.getIntY());
 		}
 		
 		public void drawRect(Vector loc, Vector size) {

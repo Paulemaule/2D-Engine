@@ -12,16 +12,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		Base.initialize("TEST221",new Vector(800,500));
-		System.out.println("aaa");
-		for(int i = 0; i < 200; i++) {
+		for(int i = 0; i < 15; i++) {
 		Base.getWorld().addEntity(
-				new MovingEntity(
-						new Vector(100,100), 
-						new Vector(50,50),
-						new Color(Maths.round(Maths.random(0, 255)),Maths.round(Maths.random(0, 255)),Maths.round(Maths.random(0, 255))),
-						ShapedEntity.FILL_OVAL,
-						new Vector(Maths.random(-150, 150),Maths.random(-150, 150)),
-						MovingEntity.STOP_AT_BORDER));
+			new Bird(new Vector(Maths.random(0+5, 800-5),Maths.random(0+5, 500-5))
+					,new Vector(Maths.random(30, 90)
+					,Maths.random(0,Math.PI*2),Vector.POLAR)));
 		}
 		Base.startLoop();
 	}
